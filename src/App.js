@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Dropdown from "./Dropdown/Dropdown";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      location: [],
+    };
+  }
+
+  async componentDidMount() {
+    let locations = await fetch("http://localhost:3000/locations");
+    this.setState({
+      location: await locations.json(),
+    });
+  }
+
+  onAddNewItem = (item) => {
+    this.setState({
+      location: [...this.state.location, item],
+    });
+  };
+
+  ddlOnChange = (selectedItem) => {
+    console.log(selectedItem);
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Dropdown
+          title="Select Country"
+          list={this.state.location}
+          onChange={this.ddlOnChange}
+          enableAddMore={true}
+          onAddNewItem={this.onAddNewItem}
+          defaultShow={3}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;

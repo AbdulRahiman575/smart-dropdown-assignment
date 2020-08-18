@@ -1,0 +1,27 @@
+{
+    "locations": [{
+            "id": 0,
+            "title": "Australia"
+        },
+        {
+            "id": 1,
+            "title": "Belgium"
+        },
+        {
+            "id": 2,
+            "title": "Canada"
+        },
+        {
+            "id": 3,
+            "title": "Denmark"
+        },
+        {
+            "id": 4,
+            "title": "Egypt"
+        },
+        {
+            "id": 5,
+            "title": "France"
+        }
+    ]
+}

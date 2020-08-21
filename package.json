@@ -6,6 +6,7 @@
         "@testing-library/jest-dom": "^4.2.4",
         "@testing-library/react": "^9.5.0",
         "@testing-library/user-event": "^7.2.1",
+        "prop-types": "^15.7.2",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-fontawesome": "^1.7.1",
@@ -13,7 +14,7 @@
         "react-scripts": "3.4.3"
     },
     "scripts": {
-        "start": "concurrently --kill-others \"npm run start:react\" \"npm run start:db\"",
+        "start": "concurrently --kill-others \"dotenv -e .env.development npm run start:react\" \"npm run start:db\"",
         "start:react": "set PORT=4000 && react-scripts start",
         "start:db": "json-server db.json",
         "build": "react-scripts build",
@@ -37,6 +38,7 @@
     },
     "devDependencies": {
         "concurrently": "^5.3.0",
+        "dotenv-cli": "^3.2.0",
         "json-mock": "^0.1.0",
         "json-server": "^0.16.1"
     }

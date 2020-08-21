@@ -1,7 +1,8 @@
 import React from "react";
 import FontAwesome from "react-fontawesome";
-import "./Dropdown.css";
+import "./style.css";
 import onClickOutside from "react-onclickoutside";
+import PropTypes from 'prop-types';
 
 class Dropdown extends React.Component {
   constructor(props) {
@@ -65,8 +66,8 @@ class Dropdown extends React.Component {
           {listOpen ? (
             <FontAwesome className="ddl-icon" name="angle-up" size="2x" />
           ) : (
-            <FontAwesome className="ddl-icon" name="angle-down" size="2x" />
-          )}
+              <FontAwesome className="ddl-icon" name="angle-down" size="2x" />
+            )}
         </div>
 
         {listOpen && (
@@ -103,23 +104,31 @@ class Dropdown extends React.Component {
                 )}
               </>
             ) : (
-              <div className="no-data-found">
-                {`"${this.state.searchText}" not found`}
-                {enableAddMore && (
-                  <button
-                    onClick={this.onAddAndSelect}
-                    className="add-select-btn"
-                  >
-                    {"Add & Select"}
-                  </button>
-                )}
-              </div>
-            )}
+                <div className="no-data-found">
+                  {`"${this.state.searchText}" not found`}
+                  {enableAddMore && (
+                    <button
+                      onClick={this.onAddAndSelect}
+                      className="add-select-btn"
+                    >
+                      {"Add & Select"}
+                    </button>
+                  )}
+                </div>
+              )}
           </div>
         )}
       </div>
     );
   }
 }
+
+Dropdown.propTypes = {
+  list: PropTypes.array,
+  onChange: PropTypes.func,
+  enableAddMore: PropTypes.bool,
+  onAddNewItem: PropTypes.func,
+  defaultShow: PropTypes.number
+};
 
 export default onClickOutside(Dropdown);
